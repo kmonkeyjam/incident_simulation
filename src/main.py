@@ -42,7 +42,7 @@ class Rollback:RevertchangesinandHandler:
             enhanced_item = {
                 **item,
                 'processed_at': datetime.now().isoformat(),
-                'pr_id': 3,
+                'pr_id': 4,
                 'version': '1.0.0'
             }
             processed.append(enhanced_item)
