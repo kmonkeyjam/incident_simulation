@@ -1,16 +1,16 @@
 // Hotfix: Critical issue in and service
 // Implementation of hotfix: critical issue in and service for incident simulation scenarios
 
-// PR ID: 1
-// Author: bob-sre
-// Generated: 2025-08-06T14:03:03.484671
+// PR ID: 6
+// Author: charlie-qa
+// Generated: 2025-08-06T14:04:04.664403
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define VERSION "1.0.0"
-#define PR_ID 1
+#define PR_ID 6
 
 typedef struct {
     int id;

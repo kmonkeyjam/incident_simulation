@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Rollback: Revert changes in and
+Hotfix: Critical issue in and service
 
-This module implements changes related to: Implementation of rollback: revert changes in and for incident simulation scenarios
+This module implements changes related to: Implementation of hotfix: critical issue in and service for incident simulation scenarios
 """
 
 import os
@@ -12,8 +12,8 @@ from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
-class Rollback:RevertchangesinandHandler:
-    """Handler for rollback: revert changes in and"""
+class Hotfix:CriticalissueinandserviceHandler:
+    """Handler for hotfix: critical issue in and service"""
     
     def __init__(self):
         self.initialized_at = datetime.now()
@@ -22,7 +22,7 @@ class Rollback:RevertchangesinandHandler:
     def process(self, data):
         """Process the data according to new requirements"""
         try:
-            # Implementation for Rollback: Revert changes in and
+            # Implementation for Hotfix: Critical issue in and service
             result = self._apply_changes(data)
             logger.info(f"Successfully processed data: {len(data) if data else 0} items")
             return result
@@ -32,7 +32,7 @@ class Rollback:RevertchangesinandHandler:
     
     def _apply_changes(self, data):
         """Apply the specific changes for this PR"""
-        # Changes related to: Implementation of rollback: revert changes in and for incident simulation scenarios
+        # Changes related to: Implementation of hotfix: critical issue in and service for incident simulation scenarios
         if not data:
             return []
         
@@ -42,7 +42,7 @@ class Rollback:RevertchangesinandHandler:
             enhanced_item = {
                 **item,
                 'processed_at': datetime.now().isoformat(),
-                'pr_id': 4,
+                'pr_id': 6,
                 'version': '1.0.0'
             }
             processed.append(enhanced_item)
@@ -51,7 +51,7 @@ class Rollback:RevertchangesinandHandler:
 
 def main():
     """Main function for testing"""
-    handler = Rollback:RevertchangesinandHandler()
+    handler = Hotfix:CriticalissueinandserviceHandler()
     test_data = [{"id": 1, "name": "test"}, {"id": 2, "name": "demo"}]
     result = handler.process(test_data)
     print(f"Processed {len(result)} items")
