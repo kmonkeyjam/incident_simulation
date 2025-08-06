@@ -42,7 +42,7 @@ class IncidentrelatedimprovementsHandler:
             enhanced_item = {
                 **item,
                 'processed_at': datetime.now().isoformat(),
-                'pr_id': 1,
+                'pr_id': 3,
                 'version': '1.0.0'
             }
             processed.append(enhanced_item)
