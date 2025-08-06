@@ -1,0 +1,36 @@
+# Configuration for Feature: Add authentication to worker
+# Implementation of feature: add authentication to worker for incident simulation scenarios
+
+version: '1.0'
+metadata:
+  name: feature:-add-authentication-to-worker
+  pr_id: 2
+  created_at: "2025-08-05T18:52:33.731063"
+
+settings:
+  enabled: true
+  timeout: 30
+  retry_count: 3
+  
+features:
+  - name: "enhanced_processing"
+    enabled: true
+    config:
+      batch_size: 100
+      parallel: true
+  
+  - name: "monitoring"
+    enabled: true
+    config:
+      metrics_interval: 60
+      log_level: "info"
+
+database:
+  pool_size: 10
+  connection_timeout: 5000
+  retry_attempts: 3
+
+cache:
+  enabled: true
+  ttl: 300
+  max_size: 1000
