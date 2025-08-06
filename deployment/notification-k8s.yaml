@@ -1,11 +1,11 @@
-# Configuration for Rollback: Revert changes in notification
-# Implementation of rollback: revert changes in notification for incident simulation scenarios
+# Configuration for Release: notification v4.0.1
+# Implementation of release: notification v4.0.1 for incident simulation scenarios
 
 version: '1.0'
 metadata:
-  name: rollback:-revert-changes-in-notification
-  pr_id: 4
-  created_at: "2025-08-05T18:53:00.783582"
+  name: release:-notification-v4.0.1
+  pr_id: 5
+  created_at: "2025-08-06T10:45:38.818503"
 
 settings:
   enabled: true
