@@ -1,0 +1,36 @@
+# Configuration for Release: worker v1.2.8
+# Implementation of release: worker v1.2.8 for incident simulation scenarios
+
+version: '1.0'
+metadata:
+  name: release:-worker-v1.2.8
+  pr_id: 6
+  created_at: "2025-08-06T10:45:58.181556"
+
+settings:
+  enabled: true
+  timeout: 30
+  retry_count: 3
+  
+features:
+  - name: "enhanced_processing"
+    enabled: true
+    config:
+      batch_size: 100
+      parallel: true
+  
+  - name: "monitoring"
+    enabled: true
+    config:
+      metrics_interval: 60
+      log_level: "info"
+
+database:
+  pool_size: 10
+  connection_timeout: 5000
+  retry_attempts: 3
+
+cache:
+  enabled: true
+  ttl: 300
+  max_size: 1000
