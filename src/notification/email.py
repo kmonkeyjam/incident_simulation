@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Hotfix: Critical issue in notification service
+Release: notification v4.0.1
 
-This module implements changes related to: Implementation of hotfix: critical issue in notification service for incident simulation scenarios
+This module implements changes related to: Implementation of release: notification v4.0.1 for incident simulation scenarios
 """
 
 import os
@@ -12,8 +12,8 @@ from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
-class Hotfix:CriticalissueinnotificationserviceHandler:
-    """Handler for hotfix: critical issue in notification service"""
+class Release:notificationv4.0.1Handler:
+    """Handler for release: notification v4.0.1"""
     
     def __init__(self):
         self.initialized_at = datetime.now()
@@ -22,7 +22,7 @@ class Hotfix:CriticalissueinnotificationserviceHandler:
     def process(self, data):
         """Process the data according to new requirements"""
         try:
-            # Implementation for Hotfix: Critical issue in notification service
+            # Implementation for Release: notification v4.0.1
             result = self._apply_changes(data)
             logger.info(f"Successfully processed data: {len(data) if data else 0} items")
             return result
@@ -32,7 +32,7 @@ class Hotfix:CriticalissueinnotificationserviceHandler:
     
     def _apply_changes(self, data):
         """Apply the specific changes for this PR"""
-        # Changes related to: Implementation of hotfix: critical issue in notification service for incident simulation scenarios
+        # Changes related to: Implementation of release: notification v4.0.1 for incident simulation scenarios
         if not data:
             return []
         
@@ -42,7 +42,7 @@ class Hotfix:CriticalissueinnotificationserviceHandler:
             enhanced_item = {
                 **item,
                 'processed_at': datetime.now().isoformat(),
-                'pr_id': 3,
+                'pr_id': 5,
                 'version': '1.0.0'
             }
             processed.append(enhanced_item)
@@ -51,7 +51,7 @@ class Hotfix:CriticalissueinnotificationserviceHandler:
 
 def main():
     """Main function for testing"""
-    handler = Hotfix:CriticalissueinnotificationserviceHandler()
+    handler = Release:notificationv4.0.1Handler()
     test_data = [{"id": 1, "name": "test"}, {"id": 2, "name": "demo"}]
     result = handler.process(test_data)
     print(f"Processed {len(result)} items")
