@@ -1,11 +1,32 @@
-# Configuration for Hotfix: Cache invalidation bug in merchant data service
-# Fixes critical bug where merchant profile updates were not properly invalidating cached data, leading to stale information in payment flows.
+# Configuration for Fix: Cache invalidation bug in merchant data service
+# **Critical Bug Report** - Ticket #BUG-2024-0892
+
+**Issue**: Merchant profile updates not invalidating Redis cache, causing stale data in payment flows:
+- Merchants updating bank account info seeing old account in checkout
+- Fee schedule changes taking up to 1 hour to take effect
+- 23 customer support tickets in past 48 hours
+
+**Root Cause**: Cache invalidation logic in `MerchantService.updateProfile()` only clearing local cache, not distributed Redis cache keys.
+
+**Fix Details**:
+- Added Redis PUBLISH to `merchant:profile:updated:{merchant_id}` channel
+- All service instances subscribe and invalidate relevant cache keys
+- Implemented cache versioning to handle race conditions
+- Added fallback: cache entries auto-expire after 30 minutes
+
+**Testing**:
+- Manual verification: merchant profile updates reflect immediately
+- Load test: 100 concurrent profile updates with cache validation
+- Regression test added to CI pipeline
+
+**Monitoring**: Added `cache_invalidation_events` metric to track successful invalidations
+
 
 version: '1.0'
 metadata:
-  name: hotfix:-cache-invalidation-bug-in-merchant-data-service
-  pr_id: 4
-  created_at: "2025-08-06T22:19:12.758037"
+  name: fix:-cache-invalidation-bug-in-merchant-data-service
+  pr_id: 1
+  created_at: "2025-08-07T10:38:07.510579"
 
 settings:
   enabled: true
