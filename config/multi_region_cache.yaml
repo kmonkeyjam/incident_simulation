@@ -1,11 +1,46 @@
-# Configuration for WIP: Distributed cache consistency for multi-region deployments
-# Work in progress on implementing distributed cache consistency across multiple regions for global payment processing. Still testing cache synchronization strategies.
+# Configuration for Feature: Distributed cache consistency for multi-region deployments
+# **Global Expansion Challenge**: Deploying to EU (Frankfurt) and APAC (Singapore) regions. Need cache consistency across regions for merchant data.
+
+**Distributed Cache Strategy**:
+- **Active-Passive Replication**: US-West (primary), EU/APAC (replicas)
+- **Eventual Consistency**: Max 500ms propagation delay acceptable
+- **Conflict Resolution**: Last-writer-wins with vector clocks
+- **Network Partition Handling**: Regional fallback to local cache
+
+**Synchronization Mechanisms**:
+- **Redis Streams**: Cross-region event replication
+- **Pub/Sub**: Real-time cache invalidation across regions
+- **Merkle Trees**: Hourly consistency verification
+- **Anti-Entropy**: Background reconciliation process
+
+**Data Classification**:
+- **Global**: Merchant profiles, payment methods (replicated)
+- **Regional**: Transaction history, session data (local only)
+- **Critical**: Fraud rules, fee schedules (synchronous replication)
+
+**Consistency Levels**:
+- **Strong**: Fraud rules (immediate cross-region sync)
+- **Eventual**: Merchant metadata (async replication)
+- **Local**: User sessions (no replication)
+
+**Failure Scenarios**:
+- Network partition: Continue with stale cache + warnings
+- Region failure: Auto-failover to nearest healthy region
+- Sync lag >2s: Alert ops team, consider read-only mode
+
+**Testing Strategy**:
+- Chaos engineering: simulate network partitions
+- Load testing: 50K ops/sec across 3 regions
+- Consistency verification: automated daily checks
+
+**WIP Status**: Core replication working, finalizing conflict resolution edge cases
+
 
 version: '1.0'
 metadata:
-  name: wip:-distributed-cache-consistency-for-multi-region-deployments
-  pr_id: 8
-  created_at: "2025-08-06T22:20:20.227124"
+  name: feature:-distributed-cache-consistency-for-multi-region-deployments
+  pr_id: 1
+  created_at: "2025-08-07T10:39:56.583828"
 
 settings:
   enabled: true
