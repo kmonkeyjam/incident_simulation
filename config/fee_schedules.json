@@ -1,16 +1,32 @@
-// Rollback: Revert merchant fee calculation changes
-// Emergency rollback of fee calculation changes that caused incorrect merchant payouts. Reverting to previous stable version while investigating root cause.
+// Fix: Revert merchant fee calculation changes
+// **EMERGENCY ROLLBACK** - Incident #INC-2024-1156
 
-// PR ID: 2
+**Issue**: Merchant fee calculation v2.1 deployed at 14:32 UTC causing incorrect fee calculations:
+- 847 merchants overpaid by average $23.45 (total $19,526 impact)
+- 1,203 merchants underpaid by average $8.67 (total $10,430 impact)
+- Affects all transactions processed between 14:32-15:45 UTC
+
+**Immediate Actions**:
+- Reverting to fee_calculator.py v2.0.3 (last known good version)
+- Pausing all fee processing until rollback complete
+- Finance team calculating merchant reimbursements
+
+**Next Steps**:
+- Post-incident review scheduled for tomorrow 10am
+- Fee calculation v2.1 pulled from production deployment pipeline
+- Additional integration tests required before next fee calculation changes
+
+
+// PR ID: 1
 // Author: diana-architect
-// Generated: 2025-08-06T22:18:39.294067
+// Generated: 2025-08-07T10:36:53.987298
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define VERSION "1.0.0"
-#define PR_ID 2
+#define PR_ID 1
 
 typedef struct {
     int id;
@@ -24,7 +40,7 @@ int process_data(ProcessedItem* items, int count) {
     }
     
     for (int i = 0; i < count; i++) {
-        // Apply changes for Rollback: Revert merchant fee calculation changes
+        // Apply changes for Fix: Revert merchant fee calculation changes
         snprintf(items[i].status, sizeof(items[i].status), "processed_pr_%d", PR_ID);
     }
     
@@ -32,6 +48,6 @@ int process_data(ProcessedItem* items, int count) {
 }
 
 int main() {
-    printf("Running code for PR #%d: %s\n", PR_ID, "Rollback: Revert merchant fee calculation changes");
+    printf("Running code for PR #%d: %s\n", PR_ID, "Fix: Revert merchant fee calculation changes");
     return 0;
 }
