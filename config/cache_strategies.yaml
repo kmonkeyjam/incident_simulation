@@ -1,11 +1,42 @@
-# Configuration for Refactor: Optimize cache key generation for better hit rates
-# Refactors cache key generation strategy to improve cache hit rates by 15%. Includes smarter key partitioning and TTL management for different data types.
+# Configuration for Feature: Optimize cache key generation for better hit rates
+# **Performance Analysis**: Current cache hit rate 72%, missing opportunities due to poor key design. Memory usage inefficient with duplicate data.
+
+**Key Generation Improvements**:
+- **Hierarchical Keys**: `domain:entity:id:version` pattern for better organization
+- **Canonical Normalization**: Consistent parameter ordering and case handling
+- **Hash-based Keys**: MD5 hash for complex query parameters to avoid key length limits
+- **Namespace Isolation**: Environment prefixes prevent dev/prod cache collisions
+
+**Smart Partitioning Strategy**:
+- **Hot Data**: Frequently accessed keys get dedicated cache instances
+- **Cold Data**: Infrequently accessed with aggressive TTL policies
+- **Size-based Routing**: Large objects (>1MB) go to separate cache cluster
+- **Geographic Partitioning**: User session data stays in regional caches
+
+**TTL Optimization**:
+- **Dynamic TTL**: Adjust based on access patterns and data volatility
+- **Layered Expiration**: Short TTL for mutable data, long TTL for immutable
+- **Touch-based Refresh**: Extend TTL on cache hits for popular items
+- **Predictive Expiration**: Pre-expire data that's about to become stale
+
+**Memory Efficiency**:
+- **Compression**: gzip compression for text-heavy cache entries
+- **Deduplication**: Shared references for common data structures
+- **Eviction Tuning**: LRU with frequency bias for better retention
+
+**Monitoring Improvements**:
+- Per-key-pattern hit rate tracking
+- Memory usage breakdown by data type
+- Cache efficiency scoring and alerting
+
+**Expected Results**: 15% hit rate improvement (72% → 87%), 30% memory usage reduction
+
 
 version: '1.0'
 metadata:
-  name: refactor:-optimize-cache-key-generation-for-better-hit-rates
-  pr_id: 9
-  created_at: "2025-08-06T22:20:37.173313"
+  name: feature:-optimize-cache-key-generation-for-better-hit-rates
+  pr_id: 1
+  created_at: "2025-08-07T10:40:14.152890"
 
 settings:
   enabled: true
