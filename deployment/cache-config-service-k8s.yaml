@@ -5,7 +5,7 @@ version: '1.0'
 metadata:
   name: feature:-cache-configuration-management-service
   pr_id: 7
-  created_at: "2025-08-06T15:18:43.120536"
+  created_at: "2025-08-06T22:20:02.763539"
 
 settings:
   enabled: true
