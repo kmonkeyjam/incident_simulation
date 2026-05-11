@@ -30,11 +30,11 @@ logger = logging.getLogger(__name__)
 
 class Fix:RevertmerchantfeecalculationchangesHandler:
     """Handler for fix: revert merchant fee calculation changes"""
-    
+
     def __init__(self):
         self.initialized_at = datetime.now()
         logger.info(f"Initialized {self.__class__.__name__} at {self.initialized_at}")
-    
+
     def process(self, data):
         """Process the data according to new requirements"""
         try:
@@ -45,7 +45,7 @@ class Fix:RevertmerchantfeecalculationchangesHandler:
         except Exception as e:
             logger.error(f"Error processing data: {e}")
             raise
-    
+
     def _apply_changes(self, data):
         """Apply the specific changes for this PR"""
         # Changes related to: **EMERGENCY ROLLBACK** - Incident #INC-2024-1156
@@ -67,7 +67,7 @@ class Fix:RevertmerchantfeecalculationchangesHandler:
 
         if not data:
             return []
-        
+
         processed = []
         for item in data:
             # Enhanced processing logic
@@ -78,7 +78,7 @@ class Fix:RevertmerchantfeecalculationchangesHandler:
                 'version': '1.0.0'
             }
             processed.append(enhanced_item)
-        
+
         return processed
 
 def main():
