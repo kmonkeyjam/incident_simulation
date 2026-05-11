@@ -52,11 +52,11 @@ logger = logging.getLogger(__name__)
 
 class Feature:SubscriptionbillingandrecurringpaymentsHandler:
     """Handler for feature: subscription billing and recurring payments"""
-    
+
     def __init__(self):
         self.initialized_at = datetime.now()
         logger.info(f"Initialized {self.__class__.__name__} at {self.initialized_at}")
-    
+
     def process(self, data):
         """Process the data according to new requirements"""
         try:
@@ -67,7 +67,7 @@ class Feature:SubscriptionbillingandrecurringpaymentsHandler:
         except Exception as e:
             logger.error(f"Error processing data: {e}")
             raise
-    
+
     def _apply_changes(self, data):
         """Apply the specific changes for this PR"""
         # Changes related to: **Market Opportunity**: 67% of payment volume could be subscription-based. Currently losing deals to competitors with native subscription support.
@@ -111,7 +111,7 @@ class Feature:SubscriptionbillingandrecurringpaymentsHandler:
 
         if not data:
             return []
-        
+
         processed = []
         for item in data:
             # Enhanced processing logic
@@ -122,7 +122,7 @@ class Feature:SubscriptionbillingandrecurringpaymentsHandler:
                 'version': '1.0.0'
             }
             processed.append(enhanced_item)
-        
+
         return processed
 
 def main():
